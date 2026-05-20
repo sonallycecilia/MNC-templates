@@ -209,6 +209,117 @@ p { font-size: 1.2rem; line-height: 1.6; color: var(--text-secondary); }
 .nav-btn { width: 55px; height: 55px; background: var(--bg-card); border: 2px solid var(--teal); color: var(--teal); cursor: pointer; transition: 0.3s; font-family: var(--font-mono); font-size: 1.5rem; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: bold;}
 .nav-btn:hover { background: var(--teal); color: var(--bg-page); box-shadow: 0 0 20px var(--teal-glow); }
 
-.dots { position: fixed; left: 40px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 15px; z-index: 1100; }
-.dot { width: 8px; height: 8px; background: var(--border-color); transform: rotate(45deg); transition: 0.3s; }
-.dot.active { background: var(--teal); box-shadow: 0 0 15px var(--teal-glow); transform: rotate(45deg) scale(1.8); }
+.dots { position: fixed; left: 40px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 18px; z-index: 1100; }
+.dot { width: 12px; height: 12px; background: var(--border-color); transform: rotate(45deg); transition: 0.3s; cursor: pointer; }
+.dot:hover { background: rgba(171,214,205,0.8); }
+.dot.active { background: var(--teal); box-shadow: 0 0 18px var(--teal-glow); transform: rotate(45deg) scale(1.8); }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COMPONENTES E MÓDULOS REUTILIZÁVEIS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── LAYOUTS FLEXÍVEIS ── */
+.flex-columns { display: flex; gap: 40px; flex-grow: 1; margin-top: 30px; }
+.flex-columns-gap-60 { display: flex; gap: 60px; flex-grow: 1; margin-top: 30px; align-items: center; }
+.flex-split { display: flex; gap: 80px; flex-grow: 1; align-items: center; margin-top: 30px; }
+.flex-wrap-gap-20 { display: flex; gap: 20px; flex-grow: 1; margin-top: 20px; }
+.flex-grid-2 { display: flex; gap: 20px; flex-grow: 1; margin-top: 30px; }
+
+/* ── COLUNAS COM PESOS ── */
+.col-1 { flex: 1; }
+.col-1-2 { flex: 1.2; }
+.col-1-5 { flex: 1.5; }
+.col-2 { flex: 2; }
+
+/* ── MODELOS DE PILARES TECH ── */
+.pillar { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+.pillar-full { flex: 1; display: flex; flex-direction: column; gap: 15px; }
+
+.pillar-header-teal { font-family: var(--font-mono); font-size: 1rem; font-weight: bold; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; color: var(--teal); }
+.pillar-header-lilac { font-family: var(--font-mono); font-size: 1rem; font-weight: bold; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; color: var(--lilac); }
+.pillar-header-purple { font-family: var(--font-mono); font-size: 1rem; font-weight: bold; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; color: var(--purple); }
+
+.pillar-title { font-family: var(--font-tech); font-size: 1.6rem; margin-bottom: 10px; color: var(--text-primary); }
+.pillar-title-sm { font-family: var(--font-tech); font-size: 1.5rem; margin-bottom: 10px; color: var(--text-primary); }
+.pillar-title-xs { font-family: var(--font-tech); font-size: 1.4rem; margin-bottom: 15px; color: var(--text-primary); }
+.pillar-title-lg { font-family: var(--font-tech); font-size: 2.2rem; margin-bottom: 30px; color: var(--text-primary); }
+
+/* ── ÍCONES GRANDES ── */
+.icon-lg { font-size: 3rem; margin-bottom: 20px; }
+.icon-xl { font-size: 3.5rem; margin-bottom: 15px; }
+.icon-xxl { font-size: 2.8rem; margin-bottom: 20px; }
+
+/* ── BOXES COM BACKGROUND COLORIDO ── */
+.box-teal { background: rgba(171,214,205,0.05); padding: 15px; border-left: 4px solid var(--teal); margin-bottom: 25px; }
+.box-lilac { background: rgba(192,136,184,0.05); padding: 15px; border-left: 4px solid var(--lilac); margin-bottom: 25px; }
+.box-purple { background: rgba(135,115,164,0.05); padding: 15px; border-left: 4px solid var(--purple); }
+.box-purple-lg { background: rgba(135,115,164,0.05); padding: 15px; border-left: 4px solid var(--purple); margin-bottom: 15px; }
+
+/* ── DIVISOR E SEPARADOR ── */
+.divider-dashed { border-top: 1px dashed var(--border-color); padding-top: 20px; }
+.divider-lg { border-top: 1px dashed var(--border-color); padding-top: 20px; }
+
+/* ── TEXTOS E PARÁGRAFOS ── */
+.text-lg { font-size: 1.4rem; }
+.text-regular { font-size: 1.2rem; }
+.text-sm { font-size: 1.1rem; }
+.text-xs { font-size: 1rem; }
+.text-secondary { color: var(--text-secondary); }
+
+/* ── LISTA CUSTOMIZADA ── */
+.list-item { margin-bottom: 15px; font-size: 1.2rem; }
+.list-item-sm { margin-bottom: 12px; font-size: 1.1rem; }
+.list-item-xs { margin-bottom: 10px; font-size: 1rem; }
+
+/* ── ESTATÍSTICAS E NÚMEROS GRANDES ── */
+.stat-box { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; background: rgba(171,214,205,0.01); }
+.stat-number { font-size: 3rem; color: var(--teal); display: block; line-height: 1; font-weight: bold; }
+.stat-number-lilac { font-size: 3rem; color: var(--lilac); display: block; line-height: 1; font-weight: bold; }
+.stat-number-purple { font-size: 3rem; color: var(--purple); display: block; line-height: 1; font-weight: bold; }
+.stat-label { font-size: 1.1rem; color: var(--text-secondary); }
+
+/* ── HUD BOX CUSTOMIZADO COM ALTURA ── */
+.hud-full { flex-grow: 1; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+.hud-gap-30 { gap: 30px; flex-grow: 1; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+
+/* ── CORES ── */
+.color-teal { color: var(--teal); }
+.color-lilac { color: var(--lilac); }
+.color-purple { color: var(--purple); }
+.bg-teal-light { background: rgba(171,214,205,0.05); }
+.bg-lilac-light { background: rgba(192,136,184,0.05); }
+.bg-purple-light { background: rgba(135,115,164,0.05); }
+
+/* ── ESPAÇAMENTO ── */
+.mb-10 { margin-bottom: 10px; }
+.mb-15 { margin-bottom: 15px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-25 { margin-bottom: 25px; }
+.mb-30 { margin-bottom: 30px; }
+.mt-10 { margin-top: 10px; }
+.mt-20 { margin-top: 20px; }
+.mt-30 { margin-top: 30px; }
+
+/* ── SEÇÕES ESPECIAIS ── */
+.code-section { display: flex; gap: 40px; flex-grow: 1; margin-top: 30px; }
+.gallery-section { flex: 1.5; margin-top: 0; }
+
+/* ── SUBTÍTULOS E CABEÇALHOS ── */
+.subtitle-icon { font-size: 2.8rem; margin-bottom: 20px; }
+.subtitle-icon-lg { font-size: 2.5rem; margin-bottom: 20px; }
+
+/* ── TAGS CUSTOMIZADAS ── */
+.tag-teal { font-size: 1rem; border-color: var(--teal); color: var(--teal); }
+.tag-lilac { font-size: 1rem; border-color: var(--lilac); color: var(--lilac); }
+
+/* ── ITEM COM ÍCONE E TEXTO ── */
+.item-with-icon { display: flex; align-items: center; gap: 20px; }
+.item-icon { font-size: 3rem; }
+
+/* ── CONTEÚDO DE PROSA ── */
+.prose-section { display: flex; gap: 40px; flex-grow: 1; margin-top: 30px; }
+.prose-col { flex: 1.2; }
+
+/* ── JUSTIFY CENTER NO SLIDE ── */
+.center-content { justify-content: center; }
+

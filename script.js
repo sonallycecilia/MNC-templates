@@ -31,9 +31,10 @@ const dotsContainer = document.getElementById('dotsContainer');
 let currentSlide = 0;
 let isAnimating = false;
 
-slides.forEach(() => {
+slides.forEach((_, index) => {
   const dot = document.createElement('div');
   dot.className = 'dot';
+  dot.addEventListener('click', () => goToSlide(index));
   dotsContainer.appendChild(dot);
 });
 const dots = document.querySelectorAll('.dot');
@@ -46,25 +47,28 @@ function updateSlideState() {
   dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
 }
 
+function goToSlide(target) {
+  if (isAnimating || target === currentSlide) return;
+  if (target >= 0 && target < slides.length) {
+    isAnimating = true;
+    wipe.classList.remove('exit');
+    wipe.classList.add('active');
+    setTimeout(() => {
+      currentSlide = target;
+      deck.scrollTo({ left: currentSlide * window.innerWidth, behavior: 'auto' });
+      updateSlideState();
+      wipe.classList.remove('active');
+      wipe.classList.add('exit');
+      setTimeout(() => { isAnimating = false; }, 600);
+    }, 500);
+  }
+}
+
 function moveSlide(dir) {
   if (isAnimating) return;
   const next = currentSlide + dir;
   if (next >= 0 && next < slides.length) {
-    isAnimating = true;
-    
-    wipe.classList.remove('exit');
-    wipe.classList.add('active');
-    
-    setTimeout(() => {
-      currentSlide = next;
-      deck.scrollTo({ left: currentSlide * window.innerWidth, behavior: 'auto' });
-      updateSlideState();
-      
-      wipe.classList.remove('active');
-      wipe.classList.add('exit');
-      
-      setTimeout(() => { isAnimating = false; }, 600);
-    }, 500);
+    goToSlide(next);
   }
 }
 
